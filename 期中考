@@ -1,0 +1,22 @@
+````
+[1]傳值呼叫(call by value)
+   (1)方法中的虛引數宣告為基本資料型別，表示該方法的傳遞方式是傳值呼叫。
+   (2)方法若採傳值呼叫則敘述的實引數如方法的虛引數分別在不同記憶體。
+   (3)可防止變數被方法更改
+   
+public class callByVal{
+    public static void main(String[] args){
+        int a=10 , b=15;
+        System.out.println("傳值呼叫前\t a="+a+"\t b="+b);
+        byVal(a,b);
+        System.out.println("傳值呼叫後\t a="+a+"\t b="+b);
+    }
+    static void byVal(int x,int y){
+        int t;
+        t = x;
+        x = y;
+        y = t;
+        System.out.println("傳值呼叫中\t x="+x+"\t y="+y);
+    }
+}
+`````
