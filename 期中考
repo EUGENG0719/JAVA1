@@ -1,4 +1,5 @@
 ````
+``````
 [1]傳值呼叫(call by value)
    (1)方法中的虛引數宣告為基本資料型別，表示該方法的傳遞方式是傳值呼叫。
    (2)方法若採傳值呼叫則敘述的實引數如方法的虛引數分別在不同記憶體。
@@ -20,4 +21,69 @@ public class callByVal{
     }
 }
 `````
-````
+```````````
+參考呼叫(call By Reference)
+(1)方法中的虛引數宣告為基本參考資料型別，表示該方法的引數傳遞方式是參考呼叫。
+(2)呼叫敘述中的實引數與被呼叫方法中的虛引數，兩者站同一記憶體位址
+                                                  (address)
+(3)引數傳遞是把呼叫敘述中的實引數將記憶體為址傳給呼叫方法中的虛引數。
+
+class Obj {
+	int a, b;
+
+	Obj() {
+		a = 10;
+		b = 15;
+	}
+}
+
+public class CallByRef {
+	public static void main(String[] args) {
+		Obj obj = new Obj();
+		System.out.println(" 參考呼叫前\t a = " + obj.a + "\tb = " + obj.b);
+		byRef(obj);
+		System.out.println(" 參考呼叫後\t a = " + obj.a + "\tb = " + obj.b);
+	}
+
+	static void byRef(Obj p) {
+		int t;
+		t = p.a;
+		p.a = p.b;
+		p.b = t;
+	}
+}
+
+[2]方法多載
+  (1)稱超載或覆載
+  (2)在同一類別中允許方法使用相同名稱，但引數串列資料型別，個數，順序不同
+  (3)多載讓方法變的彈性能接受不同參數的組合，符合更多應用情境
+  
+  1.void methed(){}
+  2.int  methed(){}不能:傳回值不同但個數相同
+  3.void methed(int a){}成功:比第一行多一引數
+  4.void methed(int b){}不能:引數不同，但和第三行型別個數相同
+  5.void methed(string s){}成功:雖和第三行個數同，但型別不同
+  6.void methed(int a,string s){}成功:引數，個數，型別不同
+  7.void methed(string s,int a){}成功:和第六行引數，個數，型別同，但順序不同
+程式設計題
+
+(1)
+import java.io.*;
+public class test {
+
+    public static void main(String args[])throws IOException {
+     	BufferedReader buf=new BufferedReader(new InputStreamReader(System.in));
+     	System.out.print("請輸入費氏數列項數x：");
+     	int x=Integer.parseInt(buf.readLine());
+     	System.out.println("費氏數列第"+x+"項數的值為"+fib(x));
+    }
+    
+    public static long fib(int n){
+        if(n==1)
+		return 1;
+	else if (n==2)
+		return 1;
+	else
+		return fib(n-1)+fib(n-2); 
+    }   
+}
